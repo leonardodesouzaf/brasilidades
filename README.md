@@ -55,9 +55,11 @@ start the app via docker (you must have docker installed)
   docker-compose -p brasilidades up --build
 ```
 
+then open [localhost:3000](http://localhost:3000/) to acess the app
+
 ## deployment
 
-deploy link
+deploy link unavailable
 
 ## authors
 

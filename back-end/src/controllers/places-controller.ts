@@ -5,7 +5,7 @@ import httpStatus from "http-status";
 
 export async function placesGet(req: AuthenticatedRequest, res: Response) {
   const { district } = req.params;
-
+  
   try {
     const places = await placesService.getDistrictPlaces(district);
     return res.status(httpStatus.OK).send(places);
