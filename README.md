@@ -21,10 +21,10 @@ the brasilidades project came to help travel lovers discover the hidden wonders 
 
 ## features
 
-- login/register to access the app
+- login/register with Google, GitHub or Facebook
 - dynamic app with CSS frameworks and React libs
 - easy and simple to use
-- account settings page
+- manage account with settings page
 - attractions favorite list
 
 
@@ -47,10 +47,12 @@ go to the project directory
   cd brasilidades
 ```
 
+set up the .env of each folder before continuing
+
 start the app via docker (you must have docker installed)
 
 ```bash
-  docker-compose -p brasilidades-back-integration up --build
+  docker-compose -p brasilidades up --build
 ```
 
 ## deployment
