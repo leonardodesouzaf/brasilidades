@@ -1,0 +1,67 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures = ["interactiveTransactions"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id         Int          @id @default(autoincrement())
+  email      String       @unique @db.VarChar(255)
+  password   String       @db.VarChar(255)
+  createdAt  DateTime     @default(now())
+  updatedAt  DateTime     @updatedAt
+  Session    Session[]
+  Favorite   Favorite[]
+}
+
+model Session {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  User      User     @relation(fields: [userId], references: [id])
+  token     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Place {
+  id           Int      @id @default(autoincrement())
+  district     String
+  name         String
+  image        String
+  image2       String
+  image3       String
+  image4       String
+  description  String
+  city         String
+  googleMapUrl String
+  isPaid       Boolean
+  hasFood      Boolean
+  hasCellular  Boolean
+  hasWc        Boolean
+  hasGuidance  Boolean
+  isTrekking   Boolean
+  needId       Boolean
+  car          Boolean
+  airplane     Boolean
+  boat         Boolean
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  Favorite     Favorite[]
+}
+
+model Favorite {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  User      User     @relation(fields: [userId], references: [id])
+  placeId   Int
+  Place     Place    @relation(fields: [placeId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
