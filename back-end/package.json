@@ -22,8 +22,7 @@
   "author": "Leonardo de Souza Ferreira",
   "license": "ISC",
   "prisma": {
-    "seed": "npm run dev:load-envs -- ts-node prisma/seed.ts",
-    "schema" : "brasilidades-back/prisma/schema.prisma"
+    "seed": "npm run dev:load-envs -- ts-node prisma/seed.ts"
   },
   "engines": {
     "npm": ">=8.0.0 <9.0.0",
