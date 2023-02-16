@@ -47,7 +47,7 @@ go to the project directory
   cd brasilidades
 ```
 
-set up the .env of each folder before continuing
+set up the .env of each folder (back-end and front-end) before continuing
 
 start the app via docker (you must have docker installed)
 
