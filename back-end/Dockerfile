@@ -5,6 +5,7 @@ WORKDIR /brasilidades-back
 COPY ./package*.json ./
 COPY ./tsconfig*.json ./
 COPY ./.husky ./
+COPY ./prisma ./
 
 RUN npm install
 

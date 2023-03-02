@@ -24,7 +24,7 @@ services:
       - ./back-end:/brasilidades-back
       - /brasilidades-back/node_modules
     entrypoint: dockerize -wait tcp://brasilidades-db:5432 -timeout 20s docker-entrypoint.sh
-    command: "npm run start"
+    command: "npm run startdocker"
 
   brasilidades-front:
     container_name: brasilidades-front

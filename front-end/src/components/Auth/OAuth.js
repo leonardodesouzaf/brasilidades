@@ -37,16 +37,14 @@ export default function OAuth({ logo, name }) {
       userData = await signIn(email, password); 
       
       setUserData(userData);
-      toast('Login realizado com sucesso!');
-      navigate('/dashboard');
+      navigate('/homepage');
     } catch(error) {
       try {
         await signUp(email, password);
         userData = await signIn(email, password);
 
         setUserData(userData);
-        toast('Login realizado com sucesso!');
-        navigate('/dashboard'); 
+        navigate('/homepage'); 
       } catch(error) {
         toast('Não foi possível fazer o login!');
       }

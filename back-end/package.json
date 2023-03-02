@@ -16,14 +16,13 @@
     "test:load-envs": "dotenv -e .env",
     "test:migration:generate": "npm run test:load-envs prisma generate",
     "test:migration:run": "npm run test:load-envs prisma migrate dev",
-    "coverage": "npm run test -- --coverage"
+    "coverage": "npm run test -- --coverage",
+    "seed":"esbuild prisma/seed.ts --outfile=node_modules/tmp-seed.cjs --bundle --format=cjs --external:prisma --external:@prisma/client && node node_modules/tmp-seed.cjs --preview-feature",
+    "startdocker": "npm run dev:load-envs prisma db seed && npm run dev:migration:run && npm run build && node dist/src/server.js"
   },
   "keywords": [],
   "author": "Leonardo de Souza Ferreira",
   "license": "ISC",
-  "prisma": {
-    "seed": "npm run dev:load-envs -- ts-node prisma/seed.ts"
-  },
   "engines": {
     "npm": ">=8.0.0 <9.0.0",
     "node": ">=16.0.0 <17.0.0"
@@ -40,6 +39,7 @@
     "@typescript-eslint/eslint-plugin": "^5.41.0",
     "@typescript-eslint/parser": "^5.41.0",
     "dotenv-cli": "^5.1.0",
+    "esbuild": "^0.17.10",
     "eslint": "^8.26.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-import-resolver-typescript": "^2.7.1",
@@ -60,6 +60,9 @@
     "ttypescript": "^1.5.13",
     "typescript": "^4.9.4",
     "typescript-transform-paths": "2.2.3"
+  },
+  "prisma": {
+    "seed": "npm run dev:load-envs -- ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
   },
   "dependencies": {
     "@prisma/client": "^3.14.0",
